@@ -6,7 +6,7 @@ $(function() {
         W = context.canvas.width,
         H = context.canvas.height,
         R = 10, // Person radius
-        V = 0.3;
+        V = 0.2;
 
     // Return true if i, j, k are all different, false otherwise
     var different = function(i, j, k) {
