@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Follow Me</title>
+  <title>Follow Me Follow Me</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="./vec.js" type="text/javascript"></script>
   <script src="./followme.js" type="text/javascript"></script>
@@ -27,19 +27,39 @@
       <div id="slider"></div>
     </p>
     <p>
-      <label for="error">Error</label>
+      <label for="error">Error/mm</label>
       <input type="text" id="error" readonly>
     </p>
   </div>
 </div>
 
 <div id="description">
-<p class="sect">&sect;</p>
-<p>This is an 8m by 6m room. The black circles are people. Each person has decided to follow two others in the room, indicated by the arrows.</p>
-<p>The objective is to end up in a position where each person stands an equal distance from each of the two peple they are following.</p>
-<p>Source code for this page can be found at <a href="https://github.com/wordaligned/followme">https://github.com/wordaligned/followme</a></p>
-<p class="sect">&sect;</p>
-<p>The button icons were downloaded from <a href="http://glyphicons.com">glyphicons.com</a> and are licensed under the <a href="http://creativecommons.org/licenses/by/3.0/deed.en">CC BY 3.0</a> terms.</p>
+  <p class="sect">&sect;</p>
+  <p>This is an 8m by 6m room. The black circles are people. Each person has decided to follow two others in the room, indicated by the arrows.</p>
+
+  <p>The objective is to end up in a position where each person stands
+  an equal distance from each of the two peple they are following.</p>
+
+  <p>Each person advances at the same time, each employing the same
+  strategy. In the picture, T is following P and Q. The dotted line
+  indicates all points equidistant from P and Q: that is, the line
+  through M the midpoint of P and Q which is perpendicular to PQ. T
+  moves towards a point on this line, T’, which is the same distance
+  from M as T.</p>
+
+  <img src="http://wordaligmed.org/images/followme-step.png"
+  alt="Follow me step"/>
+
+  <p>Each person contributes towards the displayed error. The error
+  contributed by T is the absolute difference between the lengths TP
+  and TQ, measured in millimetres.</p>
+
+  <p class="sect">&sect;</p>
+  <p>Source code for this page can be found at <a
+  href="https://github.com/wordaligned/followme">github.com/wordaligned/followme</a></p>
+  <p>For more context, see <a href="http://wordaligned.org/articles/follow-me-follow-me">wordaligned.org/articles/follow-me-follow-me</a></p>
+  <p class="sect">&sect;</p>
+  <p>The button icons were downloaded from <a href="http://glyphicons.com">glyphicons.com</a> and are licensed under the <a href="http://creativecommons.org/licenses/by/3.0/deed.en">CC BY 3.0</a> terms.</p>
 <p>
 <hr/>
 <div id="footer">
