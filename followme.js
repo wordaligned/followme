@@ -45,7 +45,7 @@ $(function() {
     }
 
     var set_error = function() {
-        $("#error").val(error().toFixed(2));
+        $("#error").val(Math.floor(10 * error())); // Convert from pixels to mm
     }
 
     var clear_error = function() {
