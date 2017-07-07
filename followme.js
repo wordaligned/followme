@@ -2,7 +2,9 @@ $(function() {
     var canvas = $('#playground')[0],
         context = canvas.getContext('2d'),
         timer = 0,
+        duration = 0,
         frame_delay_msecs = 100,
+        error_mm = 0,
         W = context.canvas.width,
         H = context.canvas.height,
         R = 10, // Person radius
@@ -20,6 +22,9 @@ $(function() {
     }
 
     // How far from a solution?
+    // Each person contributes towards the error.
+    // A person contributes the absolute difference between the lengths
+    // to the people they are following.
     var error = function() {
         return this.state.reduce(function(err, p, i, state) {
             var to_left  = state[p.left].pt.clone().sub(p.pt).mod();
@@ -45,7 +50,14 @@ $(function() {
     }
 
     var set_error = function() {
-        $("#error").val(Math.floor(10 * error())); // Convert from pixels to mm
+        error_mm = Math.floor(10 * error()); // Convert from pixels to mm
+        $("#error").val(error_mm);
+        return error_mm;
+    }
+
+    var set_time = function() {
+        var t = Math.floor(duration * 0.001);
+        $("#time").val(t);
     }
 
     var clear_error = function() {
@@ -65,6 +77,9 @@ $(function() {
     var play = function() {
         if (!timer) {
             timer = setInterval(step, frame_delay_msecs);
+        }
+        if (error_mm === 0) {
+            reset();
         }
         $('#toggle').attr('title', 'Pause').click(pause).html('<img src="./images/glyphicons_174_pause.png" />');
     }
@@ -101,6 +116,7 @@ $(function() {
             };
         });
         this.state = new_state;
+        duration += frame_delay_msecs;
         redraw();
     }
 
@@ -141,7 +157,11 @@ $(function() {
             arrow(p.pt, lt.pt);
             arrow(p.pt, rt.pt);
         });
-        set_error();
+
+        set_time();
+        if (set_error() === 0) {
+            pause();
+        }
     }
 
     // Clear the canvas
@@ -178,6 +198,9 @@ $(function() {
         draw();
     }
 
+    // Reset by drawing a random pattern 
+    var reset = random;
+    
     $("#slider").slider({
         value: 10,
         min: 3,
