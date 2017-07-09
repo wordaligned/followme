@@ -182,15 +182,6 @@ $(function() {
         step();
     }
 
-    var populate = function() {
-        var canvas = $(this),
-        pattern = patterns[canvas.attr('id')],
-        type = canvas.data('type'),
-        context = this.getContext('2d');
-        context.fillStyle = pattern_colours[type];
-        draw_pattern(context, pattern);
-    }
-
     // Fill the followme canvas with a random pattern
     var random = function() {
         clear();
